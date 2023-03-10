@@ -1,6 +1,13 @@
 import ChartBar from './ChartBar';
 
-function Chart({ expenses }) {
+export type ExpensesProps = {
+  expenses: {
+    amount: number;
+    date: Date;
+  }[];
+};
+
+function Chart({ expenses }: ExpensesProps) {
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },
