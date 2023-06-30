@@ -1,5 +1,10 @@
 // /expenses/raw
 
-export default function ExpensesRawPage() {
-  return <h1>Expenses Raw Page</h1>;
+import { getExpenses } from '~/data/expenses.server';
+import { requireUserSession } from '~/data/auth.server';
+import { LoaderArgs } from '@remix-run/node';
+
+export async function loader({ request }: LoaderArgs) {
+  const userId = await requireUserSession(request);
+  return getExpenses(userId);
 }
