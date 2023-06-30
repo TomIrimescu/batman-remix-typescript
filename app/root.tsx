@@ -1,4 +1,5 @@
 // @ts-nocheck
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
   Link,
   Links,
@@ -13,7 +14,7 @@ import {
 import sharedStyles from '~/styles/shared.css';
 import Error from '~/components/util/Error';
 
-export const meta = () => ({
+export const meta: MetaFunction = () => ({
   charset: 'utf-8',
   title: 'Remix - Expenses App',
   viewport: 'width=device-width,initial-scale=1',
@@ -92,6 +93,11 @@ export function ErrorBoundary({ error }) {
   );
 }
 
-export function links() {
-  return [{ rel: 'stylesheet', href: sharedStyles }];
-}
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: 'stylesheet',
+      href: sharedStyles,
+    },
+  ];
+};
