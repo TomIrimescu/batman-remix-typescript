@@ -2,7 +2,7 @@ import { Form, Link, NavLink, useLoaderData } from '@remix-run/react';
 
 import Logo from '../util/Logo';
 
-function MainHeader() {
+function ExpensesHeader() {
   const userId = useLoaderData<String>();
 
   return (
@@ -11,10 +11,12 @@ function MainHeader() {
       <nav id='main-nav'>
         <ul>
           <li>
-            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/expenses' end>
+              Manage Expenses
+            </NavLink>
           </li>
           <li>
-            <NavLink to='/pricing'>Pricing</NavLink>
+            <NavLink to='/expenses/analysis'>Analyze Expenses</NavLink>
           </li>
         </ul>
       </nav>
@@ -38,4 +40,4 @@ function MainHeader() {
   );
 }
 
-export default MainHeader;
+export default ExpensesHeader;

@@ -1,3 +1,7 @@
+import { Link, useFetcher } from '@remix-run/react';
+import { useState } from 'react';
+import ModalConfirm from '../util/ModalConfirm';
+
 export type ExpenseListItemProps = {
   id: string;
   title: string;
@@ -5,21 +9,47 @@ export type ExpenseListItemProps = {
 };
 
 function ExpenseListItem({ id, title, amount }: ExpenseListItemProps) {
+  const [show, setShow] = useState(false);
+
+  const fetcher = useFetcher();
+
   function deleteExpenseItemHandler() {
-    // tbd
+    fetcher.submit(null, {
+      method: 'delete',
+      action: `/expenses/${id}`,
+    });
+  }
+
+  if (fetcher.state !== 'idle') {
+    return (
+      <article className='expense-item locked'>
+        <p>Deleting...</p>
+      </article>
+    );
   }
 
   return (
-    <article className='expense-item'>
-      <div>
-        <h2 className='expense-title'>{title}</h2>
-        <p className='expense-amount'>${amount.toFixed(2)}</p>
-      </div>
-      <menu className='expense-actions'>
-        <button onClick={deleteExpenseItemHandler}>Delete</button>
-        <a href='tbd'>Edit</a>
-      </menu>
-    </article>
+    <>
+      <ModalConfirm
+        title={title}
+        fetcher={deleteExpenseItemHandler}
+        id={id}
+        onClose={() => setShow(false)}
+        show={show}
+      >
+        Do you want to delete this expense?
+      </ModalConfirm>
+      <article className='expense-item'>
+        <div>
+          <h2 className='expense-title'>{title}</h2>
+          <p className='expense-amount'>${amount.toFixed(2)}</p>
+        </div>
+        <menu className='expense-actions'>
+          <button onClick={() => setShow(true)}>Delete</button>
+          <Link to={id}>Edit</Link>
+        </menu>
+      </article>
+    </>
   );
 }
 
