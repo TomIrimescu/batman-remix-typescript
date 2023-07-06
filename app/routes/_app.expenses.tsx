@@ -13,6 +13,18 @@ import ExpensesList from '~/components/expenses/ExpensesList';
 import { requireUserSession } from '~/data/auth.server';
 import { getExpenses } from '~/data/expenses.server';
 
+// export async function loader({ request }: LoaderArgs) {
+//   const userId = await requireUserSession(request);
+
+//   const expenses = await getExpenses(userId);
+//   // return expenses;
+//   return json(expenses, {
+//     headers: {
+//       'Cache-Control': 'max-age=3',
+//     },
+//   });
+// }
+
 export default function ExpensesLayout() {
   const expenses = useLoaderData();
 
@@ -44,18 +56,6 @@ export default function ExpensesLayout() {
       </main>
     </>
   );
-}
-
-export async function loader({ request }: LoaderArgs) {
-  const userId = await requireUserSession(request);
-
-  const expenses = await getExpenses(userId);
-  // return expenses;
-  return json(expenses, {
-    headers: {
-      'Cache-Control': 'max-age=3',
-    },
-  });
 }
 
 export const meta: MetaFunction = () => {

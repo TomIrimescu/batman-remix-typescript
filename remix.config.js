@@ -8,7 +8,7 @@ module.exports = {
     v2_headers: false,
     v2_meta: false,
     v2_normalizeFormMethod: false,
-    v2_routeConvention: false,
+    v2_routeConvention: true,
   },
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",

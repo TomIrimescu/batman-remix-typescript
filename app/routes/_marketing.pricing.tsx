@@ -1,7 +1,8 @@
-import { HeadersFunction, MetaFunction } from '@remix-run/node';
+import { HeadersFunction, LinksFunction, MetaFunction } from '@remix-run/node';
 import { FaTrophy, FaHandshake } from 'react-icons/fa';
 
 import PricingPlan from '~/components/marketing/PricingPlan';
+import marketingStyles from '~/styles/marketing.css';
 
 const PRICING_PLANS = [
   {
@@ -49,3 +50,7 @@ export const headers: HeadersFunction = ({ parentHeaders }) => ({
   // @ts-ignore
   'Cache-Control': parentHeaders.get('Cache-Control'), // 60 minutes
 });
+
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: marketingStyles }];
+};
