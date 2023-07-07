@@ -21,7 +21,7 @@ function ExpenseForm({}: ExpenseFormProps) {
   // const matches = useMatches();
   // @ts-ignore
   // const expenses: RouteMatch[] = matches.find(
-  //   (match) => match.id === 'routes/__app/expenses'
+  //   (match) => match.id === 'routes/_app/expenses'
   // ).data;
   // const expenseData: ExpenseFormProps = expenses.find(
   //   (expense: { id: string | undefined }) => expense.id === params.id
@@ -67,7 +67,6 @@ function ExpenseForm({}: ExpenseFormProps) {
     //       defaultValue={defaultValues.title}
     //     />
     //   </p>
-
     //   <div className='form-row'>
     //     <p>
     //       <label htmlFor='amount'>Amount</label>

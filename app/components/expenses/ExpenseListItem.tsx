@@ -35,7 +35,7 @@ function ExpenseListItem({ id, title, amount }: ExpenseListItemProps) {
           <p className='expense-amount'>${amount.toFixed(2)}</p>
         </div>
         <menu className='expense-actions'>
-          <button onClick={() => setShow(true)}>Delete</button>
+          <button onClick={deleteExpenseItemHandler}>Delete</button>
           <Link to={id}>Edit</Link>
         </menu>
       </article>
