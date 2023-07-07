@@ -4,7 +4,7 @@ import { ActionArgs, MetaFunction, redirect } from '@remix-run/node';
 import { useNavigate } from '@remix-run/react';
 
 import ExpenseForm from '~/components/expenses/ExpenseForm';
-import ModalRoute from '~/components/util/ModalRoute';
+import Modal from '~/components/util/Modal';
 import { deleteExpense, updateExpense } from '~/data/expenses.server';
 import { validateExpenseInput } from '~/data/validation.server';
 
@@ -17,9 +17,9 @@ export default function UpdateExpensesPage() {
   }
 
   return (
-    <ModalRoute onClose={closeHandler}>
+    <Modal onClose={closeHandler}>
       <ExpenseForm title={''} amount={0} date={''} />
-    </ModalRoute>
+    </Modal>
   );
 }
 

@@ -1,6 +1,5 @@
 import { Link, useFetcher } from '@remix-run/react';
 import { useState } from 'react';
-import ModalConfirm from '../util/ModalConfirm';
 
 export type ExpenseListItemProps = {
   id: string;
@@ -30,15 +29,6 @@ function ExpenseListItem({ id, title, amount }: ExpenseListItemProps) {
 
   return (
     <>
-      <ModalConfirm
-        title={title}
-        fetcher={deleteExpenseItemHandler}
-        id={id}
-        onClose={() => setShow(false)}
-        show={show}
-      >
-        Do you want to delete this expense?
-      </ModalConfirm>
       <article className='expense-item'>
         <div>
           <h2 className='expense-title'>{title}</h2>
