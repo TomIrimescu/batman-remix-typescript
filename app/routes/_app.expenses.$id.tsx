@@ -45,12 +45,9 @@ export async function action({ params, request }: ActionArgs) {
   }
 }
 
-export const meta: MetaFunction = ({ params, parentsData }) => {
-  const expense = parentsData['routes/__app/expenses'].find(
-    (expense: { id: string | undefined }) => expense.id === params.id
-  );
+export const meta: MetaFunction = () => {
   return {
-    title: expense.title,
-    description: 'Update expense.',
+    title: 'Edit an expense',
+    description: 'Edit an expense with ease.',
   };
 };
